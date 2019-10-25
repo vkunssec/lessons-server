@@ -1,15 +1,19 @@
 const express = require('express');
 const https = require('https');
-const fs = require('fs');
+const path = require('path');
 
 const app = express();
-const port = process.env.PORT || 443;
+const methods = require('./tools/methods');
+const routes = require('./routes');
 
-const credentials = {
-	key: fs.readFileSync('/etc/letsencrypt/live/vknc.tk/privkey.pem'),
-	cert: fs.readFileSync('/etc/letsencrypt/live/vknc.tk/fullchain.pem')
-};
+app.use('/', express.static('./static/public'));
+app.use('/modules', routes);
 
-app.use('/', express.static('./public'));
+console.log(process.env.NODE_ENV);
+console.log(app.settings.env);
 
-https.createServer(credentials, app).listen(port, () => console.log(`Listening port ${port}.`));
+if (app.settings.env === 'development') {
+	app.listen(methods.appInfo.port, () => console.log(`Listening port ${methods.appInfo.port}.`));
+} else {
+	https.createServer(methods.credentials, app).listen(methods.appInfo.port, () => console.log(`Listening port ${methods.appInfo.port}.`));
+}
