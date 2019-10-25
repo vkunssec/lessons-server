@@ -9,11 +9,8 @@ const routes = require('./routes');
 app.use('/', express.static('./static/public'));
 app.use('/modules', routes);
 
-console.log(process.env.NODE_ENV);
-console.log(app.settings.env);
-
-if (app.settings.env === 'development') {
-	app.listen(methods.appInfo.port, () => console.log(`Listening port ${methods.appInfo.port}.`));
-} else {
+if (process.env.NODE_ENV === 'production') {
 	https.createServer(methods.credentials, app).listen(methods.appInfo.port, () => console.log(`Listening port ${methods.appInfo.port}.`));
+} else {
+	app.listen(methods.appInfo.port, () => console.log(`Listening port ${methods.appInfo.port}.`));
 }
