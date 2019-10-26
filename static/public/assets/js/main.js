@@ -7,7 +7,7 @@ function onloaded() {
             el.classList.add("onview");
         });
     }
-    setTimeout(loaded, 1000);
+    setTimeout(loaded, 100);
 }
 
 document.addEventListener('DOMContentLoaded', onloaded);
