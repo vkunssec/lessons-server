@@ -16,12 +16,17 @@ body {
 	padding: 0;
 	width: 100%;
 	height: 200vh;
-	font-family: sans-serif;
+	font-family: 'Quicksand', sans-serif;
+	color: rgb(221, 221, 221);
+	background-color: #202020;
+	overflow-x: hidden;
 }
 
 main > .vknc {
 	position: absolute;
 	font-size: 128px;
+	font-weight: 500;
+	letter-spacing: 21px;
 	top: 200px;
 	padding: 7% 0 0 7%;
 	transition: transform 1.2s, opacity 1.2s;
@@ -34,11 +39,40 @@ main > .vknc:not(.onview) {
 
 main > .square {
 	position: absolute;
-	background-color: #1558b6;
 	top: 128px;
 	right: 0;
-	width: 85%;
-	height: 100vh;
+	width: 82%;
+	max-height: 100vh;
 	z-index: -1;
 	pointer-events: none;
+	box-shadow: 0 0 9px rgba(0, 0, 0, 1);
+	transition: transform 1.2s, opacity 1.2s;
+}
+
+main > .square:not(.onview) {
+	transform: translateX(42%);
+	opacity: 0;
+}
+
+main > .square > img {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	max-width: 100%;
+	max-height: 100%;
+	width: 100vw;
+	height: 100vh;
+	object-fit: cover;
+}
+
+@media (max-width: 720px) {
+	main > .vknc {
+		font-size: 120px;
+	}
+	
+	main > .square > img {
+		object-fit: none;
+    	object-position: 30% 0%;
+	}
 }

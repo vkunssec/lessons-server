@@ -3,7 +3,7 @@ var sqr_blue = document.querySelector(`main > .square`);
 
 function onloaded() {
     function loaded() {
-        Array.prototype.forEach.call(document.querySelectorAll("[loaded]"), (el) => {
+        Array.prototype.forEach.call(document.querySelectorAll("[fade-in]"), (el) => {
             el.classList.add("onview");
         });
     }
