@@ -38,6 +38,20 @@ header > nav > img:hover {
 	transform: rotate(-90deg);
 }
 
+header > nav > .coming {
+	position: absolute;
+	top: 45px;
+	left: 121px;
+	font-size: 24px;
+	opacity: 0;
+	transition: ease 2.4s;
+}
+
+header > nav > img:active + .coming,
+header > nav > img:hover + .coming {
+	opacity: 1;
+}
+
 main > .vknc {
 	position: absolute;
 	font-size: 128px;
