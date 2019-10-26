@@ -1,3 +1,44 @@
-h2, .hello {
+* {
+	user-select: none;
+}
+
+:focus {
+	outline: none;
+}
+
+body {
+	position: relative;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 200vh;
 	font-family: sans-serif;
+}
+
+main > .vknc {
+	position: absolute;
+	font-size: 128px;
+	top: 200px;
+	padding: 7% 0 0 7%;
+	transition: transform 1.2s, opacity 1.2s;
+}
+
+main > .vknc:not(.onview) {
+	transform: translateX(-42%) translateY(-42%);
+	opacity: 0;
+}
+
+main > .square {
+	position: absolute;
+	background-color: #1558b6;
+	top: 128px;
+	right: 0;
+	width: 85%;
+	height: 100vh;
+	z-index: -1;
+	pointer-events: none;
 }
