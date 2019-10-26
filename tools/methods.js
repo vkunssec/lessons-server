@@ -19,8 +19,8 @@ const sessionConf = {
 };
 
 const credentials = { 
-    key: process.env.KEY || fs.readFileSync('/etc/letsencrypt/live/vknc.tk/privkey.pem'),
-    cert: process.env.CERT || fs.readFileSync('/etc/letsencrypt/live/vknc.tk/fullchain.pem')
+    key: fs.readFileSync(process.env.KEY),
+    cert: fs.readFileSync(process.env.CERT)
 };
 
 module.exports = {
