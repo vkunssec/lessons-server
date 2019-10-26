@@ -127,6 +127,7 @@ main > .landing > img {
 	position: relative;
 	top: 13vh;
 	width: 66%;
+	max-width: 550px;
 	float: right;
 	transform: rotate(-42deg);
 	opacity: .02;
@@ -160,6 +161,10 @@ footer > a:link {
 	
 	main > .square > img {
     	object-position: 30% 0%;
+	}
+
+	main > .landing > .title {
+		padding: 27px 13px;
 	}
 
 	main > .landing > img {
