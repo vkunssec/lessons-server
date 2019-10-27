@@ -14,5 +14,12 @@ for (let domain of methods.domains) {
     }
 }
 
-https.createServer(methods.credentials, app).listen(methods.appInfo.port, () => console.log(`Listening port ${methods.appInfo.port}.`));
-http.createServer(app).listen(80, () => console.log(`Listening port 80 too, but not recommended`));
+https.createServer(methods.credentials, app)
+    .listen(methods.appInfo.https, () => {
+        console.log(`Listening port ${methods.appInfo.https}.`);
+    });
+
+http.createServer(app)
+    .listen(methods.appInfo.http, () => {
+        console.log(`Listening port ${methods.appInfo.http} too, but not recommended`);
+    });

@@ -9,7 +9,8 @@ function sha256(value) {
 const appInfo = {
     name: 'Lightsail AWS NodeJS Server',
     secure: true,
-    port: process.env.PORT || 443
+    https: process.env.PORT_HTTPS || 443,
+    http: process.env.PORT_HTTP || 80
 };
 
 const credentials = { 
@@ -21,7 +22,7 @@ const domains = process.env.HOST.split(';');
 const subdomains = [
     {
         name: 'apis',
-        handle: './api/routes'
+        handle: './api'
     },
     {
         name: 'lessons',
