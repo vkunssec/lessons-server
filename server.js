@@ -8,8 +8,14 @@ const methods = require('./tools/methods');
 
 for (let domain of methods.domains) {
     for (let subdomain of methods.subdomains) {
+        try {
+            require(subdomain.handle);
+        } catch (error) {
+            console.log(error);
+        }
         app.use(vhost(`${subdomain.name}.${domain}`, require(subdomain.handle)));
         if (subdomain.name === 'www') app.use(vhost(`${domain}`, require(subdomain.handle)));
+        console.log(`${subdomain.name}.${domain}, require(${subdomain.handle})`);
     }
 }
 
