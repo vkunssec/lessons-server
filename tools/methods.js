@@ -17,19 +17,26 @@ const credentials = {
     cert: fs.readFileSync(process.env.CERT)
 };
 
-const domains = [ 
-    'vknc',
-    'vknc.tk',
-    'localhost',
-    'localhost:3000',
-    'lessons',
-    'controledanca',
-    'apis'
+const domains = process.env.HOST.split(';');
+const subdomains = [
+    {
+        name: 'apis',
+        handle: './api/routes'
+    },
+    {
+        name: 'lessons',
+        handle: './api/lessons'
+    },
+    {
+        name: 'www',
+        handle: './api/public'
+    }
 ];
 
 module.exports = {
     sha256,
     appInfo,
     credentials,
-    domains
+    domains,
+    subdomains
 }
