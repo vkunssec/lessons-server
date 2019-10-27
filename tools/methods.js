@@ -18,8 +18,8 @@ const credentials = {
 };
 
 const domains = {
-    vknc: 'vknc',
-    localhost: 'localhost',
+    vknc: 'vknc.tk',
+    localhost: 'localhost:3000',
     lessons: 'lessons',
     controledanca: 'controledanca',
     apis: 'apis'
@@ -29,7 +29,7 @@ const vhost = (host, app) => (req, res, next) => {
     if (!(req.hostname.split('.')[0] in domains)) {
         return res.json({ page: 'not found' });
     }
-    if (req.hostname.split('.')[0] === host) return app(req,res);
+    if (req.hostname.split('.')[0] === host) return app(req,res,next);
     next();
 }
 
