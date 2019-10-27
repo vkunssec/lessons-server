@@ -4,7 +4,8 @@
   "description": "Lightsail AWS NodeJS Server",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "vhost": "^3.0.2"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",

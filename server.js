@@ -1,5 +1,6 @@
 const express = require('express');
 const https = require('https');
+const vhost = require('vhost');
 
 const app = express();
 
@@ -8,8 +9,8 @@ const apis = require('./api/routes');
 const lessons = require('./api/lessons');
 const public = require('./api/public');
 
-app.use(methods.vhost(process.env.HOST, public));
-app.use(methods.vhost('apis', apis));
-app.use(methods.vhost('lessons', lessons));
+app.use(vhost('apis.*', apis))
+app.use(vhost('lessons.*', lessons));
+app.use(vhost('*', public));
 
 https.createServer(methods.credentials, app).listen(methods.appInfo.port, () => console.log(`Listening port ${methods.appInfo.port}.`));
