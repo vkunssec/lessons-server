@@ -8,14 +8,8 @@ function sha256(value) {
 
 const appInfo = {
     name: 'Lightsail AWS NodeJS Server',
-    clientURL: process.env.URL || 'https://vknc.tk/',
     secure: true,
     port: process.env.PORT || 443
-};
-
-const sessionConf = {
-    key: '',
-    secref: ''
 };
 
 const credentials = { 
@@ -23,9 +17,17 @@ const credentials = {
     cert: fs.readFileSync(process.env.CERT)
 };
 
+const domains = {
+    vknc: 'vknc',
+    localhost: 'localhost',
+    lessons: 'lessons',
+    controledanca: 'controledanca',
+    apis: 'apis'
+}
+
 module.exports = {
     sha256,
     appInfo,
-    sessionConf,
-    credentials
+    credentials,
+    domains
 }
