@@ -1,10 +1,12 @@
 {
   "name": "www",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Lightsail AWS NodeJS Server",
   "main": "server.js",
   "dependencies": {
     "express": "^4.17.1",
+    "http": "0.0.0",
+    "https": "^1.0.0",
     "vhost": "^3.0.2"
   },
   "devDependencies": {

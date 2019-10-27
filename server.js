@@ -1,5 +1,6 @@
 const express = require('express');
 const https = require('https');
+const http = require('http');
 const vhost = require('vhost');
 
 const app = express();
@@ -14,3 +15,4 @@ for (let domain of methods.domains) {
 }
 
 https.createServer(methods.credentials, app).listen(methods.appInfo.port, () => console.log(`Listening port ${methods.appInfo.port}.`));
+http.createServer(app).listen(80, () => console.log(`Listening port 80 too, but not recommended`));
