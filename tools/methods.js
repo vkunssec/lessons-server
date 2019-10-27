@@ -25,9 +25,18 @@ const domains = {
     apis: 'apis'
 }
 
+const vhost = (host, app) => (req, res, next) => {
+    if (!(req.hostname.split('.')[0] in domains)) {
+        return res.json({ page: 'not found' });
+    }
+    if (req.hostname.split('.')[0] === host) return app(req,res);
+    next();
+}
+
 module.exports = {
     sha256,
     appInfo,
     credentials,
-    domains
+    domains,
+    vhost
 }
