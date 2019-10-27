@@ -62,3 +62,6 @@ typings/
 
 # private path
 secure/
+
+# static path / files
+static/
