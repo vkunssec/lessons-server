@@ -2,10 +2,22 @@ const express = require('express');
 const https = require('https');
 const http = require('http');
 const vhost = require('vhost');
+const cors = require('cors');
+const body = require('body-parser');
+const mongoose = require('mongoose');
 
 const app = express();
 
 const methods = require('./tools/methods');
+
+app.use(cors());
+app.use(body.json());
+app.use(body.urlencoded({ extended: true }));
+app.use(express.json());
+
+mongoose.connect(methods.mongoCredentials.sea.lessons, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+    console.log('Connected mLab MongoDB.');
+});
 
 for (let domain of methods.domains) {
     for (let subdomain of methods.subdomains) {

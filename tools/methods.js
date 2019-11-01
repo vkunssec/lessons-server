@@ -34,10 +34,17 @@ const subdomains = [
     }
 ];
 
+const mongoCredentials = {
+    sea: {
+        lessons: `mongodb://${process.env.MONGO_USER_LESSONS}:${process.env.MONGO_PASS_LESSONS}@ds147436.mlab.com:47436/lessons-mar`
+    }
+}
+
 module.exports = {
     sha256,
     appInfo,
     credentials,
     domains,
-    subdomains
+    subdomains,
+    mongoCredentials
 }

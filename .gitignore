@@ -65,3 +65,6 @@ secure/
 
 # static path / files
 static/
+
+# uploads
+uploads/
