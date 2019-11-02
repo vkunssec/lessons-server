@@ -3,9 +3,9 @@ const Lesson = require('../models/sea/Lesson');
 exports.findAll = async (req,res) => {
     try {
         const lessons = await Lesson.find({}).sort({date: -1});
-        res.json(lessons);
+        return { result: true, message: lessons };
     } catch (error) {
-        res.json(error);
+        return { result: false, message: [error, lessons] };
     }
 }
 
@@ -19,6 +19,6 @@ exports.insert = async (req,res) => {
         const saved = await lesson.save();
         return { result: true, message: saved };
     } catch (error) {
-        return { result: false, message: saved };
+        return { result: false, message: [error, saved] };
     }
 }
