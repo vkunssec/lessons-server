@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const upload = require('../../tools/multer'); 
 const crud = require('../db/lessons');
+const fs = require('fs');
 
 router.get('/', (req,res) => {
     res.json({ api: { origin: 'sea', res: 'lessons' }, module: 'default', test: true, secure: true });
@@ -29,6 +30,12 @@ router.post('/add', upload.single('lesson'), async (req,res) => {
 
     const lesson = await crud.insert(req,res);
     res.json(lesson);
+});
+
+router.get('/uploads/:filename', (req,res) => {
+    const data = fs.readFileSync('./uploads/' + req.params.filename);
+    res.contentType("application/pdf");
+    res.send(data);
 });
 
 module.exports = router;
