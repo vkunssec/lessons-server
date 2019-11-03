@@ -15,7 +15,8 @@ app.use(body.json());
 app.use(body.urlencoded({ extended: true }));
 app.use(express.json());
 
-mongoose.connect(methods.mongoCredentials.sea.lessons, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+mongoose.connect(methods.mongoCredentials.sea.lessons, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
+    if (err) throw new Error(err);
     console.log('Connected mLab MongoDB.');
 });
 

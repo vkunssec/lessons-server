@@ -38,4 +38,14 @@ router.get('/uploads/:filename', (req,res) => {
     res.send(data);
 });
 
+router.post('/delete/:id', async (req,res) => {
+    const deleted = await crud.deleteOne(req,res);
+    res.json(deleted);
+});
+
+router.get('/:id', async (req,res) => {
+    const found = await crud.findById(req,res);
+    res.json(found);
+});
+
 module.exports = router;
